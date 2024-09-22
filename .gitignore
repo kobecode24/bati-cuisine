@@ -44,3 +44,4 @@ bin/
 /.idea/vcs.xml
 
 /resources/database.properties
+/build/

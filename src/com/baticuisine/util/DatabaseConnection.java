@@ -3,27 +3,21 @@ package com.baticuisine.util;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.util.Properties;
 
 public class DatabaseConnection {
     private static DatabaseConnection instance;
     private Connection connection;
-    private String url;
-    private String user;
-    private String password;
+    private final String url;
+    private final String user;
+    private final String password;
 
     private DatabaseConnection() {
-        try {
-            Properties prop = new Properties();
-            prop.load(new FileInputStream("resources/database.properties"));
+        this.url = System.getenv("DB_URL");
+        this.user = System.getenv("DB_USER");
+        this.password = System.getenv("DB_PASSWORD");
 
-            this.url = prop.getProperty("db.url");
-            this.user = prop.getProperty("db.user");
-            this.password = prop.getProperty("db.password");
-        } catch (IOException e) {
-            System.out.println("Error loading database properties: " + e.getMessage());
+        if (url == null || user == null || password == null) {
+            throw new RuntimeException("Database environment variables are not set.");
         }
     }
 
