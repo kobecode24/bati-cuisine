@@ -17,10 +17,6 @@ public class Estimate {
         this.accepted = false;
     }
 
-    public double calculateTotalWithMargin(double profitMargin) {
-        return estimatedAmount * (1 + profitMargin);
-    }
-
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
