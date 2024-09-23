@@ -84,7 +84,6 @@ public class ComponentRepository implements ComponentDAO {
         }
     }
 
-    // CHANGED: Updated addMaterial method to include unit_cost and quantity
     private void addMaterial(Connection conn, Material material) throws SQLException {
         try (PreparedStatement pstmt = conn.prepareStatement(INSERT_MATERIAL)) {
             pstmt.setLong(1, material.getId());

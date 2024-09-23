@@ -114,7 +114,7 @@ public class ComponentMenu {
         System.out.print("Coefficient de qualité (1.0 = standard, > 1.0 = haute qualité) : ");
         double qualityCoefficient = getValidPositiveDoubleInput();
         System.out.print("Taux de TVA (%) : ");
-        double taxRate = getValidPositiveDoubleInput() / 100.0; // Convert percentage to decimal
+        double taxRate = getValidPositiveDoubleInput() / 100.0;
 
         Material material = new Material(name, unitCost, quantity, taxRate, project.getId(), transportCost, qualityCoefficient);
         try {
@@ -136,7 +136,7 @@ public class ComponentMenu {
         System.out.print("Facteur de productivité (1.0 = standard, > 1.0 = haute productivité) : ");
         double workerProductivity = getValidPositiveDoubleInput();
         System.out.print("Taux de TVA (%) : ");
-        double taxRate = getValidPositiveDoubleInput() / 100.0; // Convert percentage to decimal
+        double taxRate = getValidPositiveDoubleInput() / 100.0;
 
         Labor labor = new Labor(name, taxRate, project.getId(), hourlyRate, hoursWorked, workerProductivity);
         try {
@@ -264,7 +264,7 @@ public class ComponentMenu {
                 System.out.print("Nouveau taux de TVA (%) (entrez -1 pour ne pas changer) : ");
                 double newTaxRate = getValidDoubleInput();
                 if (newTaxRate != -1) {
-                    component.setTaxRate(newTaxRate / 100.0); // Convert percentage to decimal
+                    component.setTaxRate(newTaxRate / 100.0);
                 }
 
                 System.out.print("Êtes-vous sûr de vouloir mettre à jour ce composant ? (O/N) : ");
