@@ -15,19 +15,7 @@ public class BatiCuisineApp {
         logger.info("Starting Bati-Cuisine application");
 
         try {
-            DatabaseConnection.getInstance();
-
-            ClientRepository clientRepository = new ClientRepository();
-            ProjectRepository projectRepository = new ProjectRepository();
-            ComponentRepository componentRepository = new ComponentRepository();
-            EstimateRepository estimateRepository = new EstimateRepository();
-
-            ClientService clientService = new ClientService(clientRepository);
-            ProjectService projectService = new ProjectService(projectRepository, componentRepository); // Modified this line
-            ComponentService componentService = new ComponentService(componentRepository);
-            EstimateService estimateService = new EstimateService(estimateRepository);
-
-            MainMenu mainMenu = new MainMenu(projectService, clientService, componentService, estimateService);
+            MainMenu mainMenu = getMainMenu();
             mainMenu.displayMenu();
 
         } catch (Exception e) {
@@ -37,5 +25,21 @@ public class BatiCuisineApp {
             DatabaseConnection.getInstance().closeConnection();
             logger.info("Bati-Cuisine application shutdown complete");
         }
+    }
+
+    private static MainMenu getMainMenu() {
+        DatabaseConnection.getInstance();
+
+        ClientRepository clientRepository = new ClientRepository();
+        ProjectRepository projectRepository = new ProjectRepository();
+        ComponentRepository componentRepository = new ComponentRepository();
+        EstimateRepository estimateRepository = new EstimateRepository();
+
+        ClientService clientService = new ClientService(clientRepository);
+        ProjectService projectService = new ProjectService(projectRepository, componentRepository);
+        ComponentService componentService = new ComponentService(componentRepository);
+        EstimateService estimateService = new EstimateService(estimateRepository);
+
+        return new MainMenu(projectService, clientService, componentService, estimateService);
     }
 }
