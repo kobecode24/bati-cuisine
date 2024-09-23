@@ -93,13 +93,7 @@ L'application Bati-Cuisine est organisée en différentes couches :
    \i sql/insert_initial_data.sql
    ```
 
-3. **Configurer les informations de connexion :**
-   Modifiez le fichier `resources/database.properties` avec vos informations de connexion PostgreSQL :
-   ```properties
-   db.url=jdbc:postgresql://localhost:5432/baticuisine
-   db.user=your_username
-   db.password=your_password
-   ```
+3. **Configurer les informations de connexion**
 
 4. **Compiler et exécuter le projet**
 
